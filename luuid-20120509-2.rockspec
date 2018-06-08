@@ -1,10 +1,10 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "luuid"
-version = "20120509-1"
+version = "20120509-2"
 -- LuaDist source
 source = {
-  tag = "20120509-1",
+  tag = "20120509-2",
   url = "git://github.com/LuaDist-testing/luuid.git"
 }
 -- Original source
@@ -23,23 +23,44 @@ description = {
    license = "Public domain"
 }
 dependencies = {
-   "lua ~> 5.2"
+   "lua >= 5.2, < 5.4"
 }
 external_dependencies = {
-   LIBUUID = {
-      header = "uuid/uuid.h",
-      library = "libuuid.so"
+   platforms = {
+      unix = {
+         LIBUUID = {
+            header = "uuid/uuid.h",
+            library = "libuuid.so"
+         }
+      }
    }
 }
 build = {
    type = "builtin",
-   modules = {
-      uuid = {
-         libraries = {
-            "uuid"
-         },
-         sources = {
-            "luuid.c"
+   platforms = {
+      win32 = {
+         modules = {
+            uuid = {
+               libraries = {
+                  "rpcrt4",
+               },
+               sources = {
+                  "luuid.c",
+                  "wuuid.c",
+               }
+            }
+         }
+      },
+      unix = {
+         modules = {
+            uuid = {
+               libraries = {
+                  "uuid", 
+               },
+               sources = {
+                  "luuid.c",
+               }
+            }
          }
       }
    }
