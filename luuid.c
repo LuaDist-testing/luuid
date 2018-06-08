@@ -2,7 +2,7 @@
 * luuid.c
 * uuid interface for Lua 5.1
 * Luiz Henrique de Figueiredo <lhf@tecgraf.puc-rio.br>
-* 03 Mar 2010 00:01:13
+* 18 Nov 2010 19:16:20
 * This code is hereby placed in the public domain.
 */
 
@@ -22,7 +22,7 @@
 #include "lauxlib.h"
 
 #define MYNAME		"uuid"
-#define MYVERSION	MYNAME " library for " LUA_VERSION " / Mar 2010"
+#define MYVERSION	MYNAME " library for " LUA_VERSION " / Nov 2010"
 
 static int Lnew(lua_State *L)			/** new([s]) */
 {
@@ -54,7 +54,7 @@ static int Ltime(lua_State *L)			/** time(s) */
  return 1;
 }
 
-static const luaL_reg R[] =
+static const luaL_Reg R[] =
 {
 	{ "isvalid",	Lisvalid	},
 	{ "new",	Lnew		},

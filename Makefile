@@ -46,7 +46,9 @@ doc:
 	@fgrep '/**' $(MYLIB).c | cut -f2 -d/ | tr -d '*' | sort | column
 
 # distribution
-W= ftp/lua/5.1
+
+FTP= www:www/ftp/lua/5.1
+F= http://www.tecgraf.puc-rio.br/~lhf/ftp/lua/5.1/$A
 D= $(MYNAME)
 A= $(MYLIB).tar.gz
 TOTAR= Makefile,README,$(MYLIB).c,test.lua,Makefile.win32,README.win32,wuuid.c,wuuid.h
@@ -54,13 +56,11 @@ TOTAR= Makefile,README,$(MYLIB).c,test.lua,Makefile.win32,README.win32,wuuid.c,w
 distr:	clean
 	tar zcvf $A -C .. $D/{$(TOTAR)}
 	touch -r $A .stamp
-	scp -p $A www:www/$W
+	scp -p $A $(FTP)
 
-diff:	clean download
+diff:	clean
+	wget -q -N $F
 	tar zxf $A
 	diff $D .
-
-download:
-	wget -q -N http://www.tecgraf.puc-rio.br/~lhf/$W/$A
 
 # eof

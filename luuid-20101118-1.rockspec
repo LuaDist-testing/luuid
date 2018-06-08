@@ -1,17 +1,17 @@
 -- This file was automatically generated for the LuaDist project.
 
 package="luuid"
-version="20100303-1"
+version="20101118-1"
 
 -- LuaDist source
 source = {
-  tag = "20100303-1",
+  tag = "20101118-1",
   url = "git://github.com/LuaDist-testing/luuid.git"
 }
 -- Original source
 -- source = {
 --    url = "http://www.tecgraf.puc-rio.br/~lhf/ftp/lua/5.1/luuid.tar.gz",
---    md5 = "e5bd7c2cf563ac4192b793934f545f49",
+--    md5="d479786745a71398c3b1e0dfd75a4e03",
 --    dir = "uuid"
 -- }
 
