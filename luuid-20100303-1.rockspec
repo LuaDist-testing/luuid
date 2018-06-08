@@ -1,18 +1,20 @@
 -- This file was automatically generated for the LuaDist project.
 
 package="luuid"
-version="20070925-1"
+version="20100303-1"
+
 -- LuaDist source
 source = {
-  tag = "20070925-1",
+  tag = "20100303-1",
   url = "git://github.com/LuaDist-testing/luuid.git"
 }
 -- Original source
 -- source = {
---    url = "http://www.tecgraf.puc-rio.br/~lhf/ftp/lua//5.1/luuid.tar.gz",
---    md5 = "0270d459694a6d4995a84a4b7c38fb87",
+--    url = "http://www.tecgraf.puc-rio.br/~lhf/ftp/lua/5.1/luuid.tar.gz",
+--    md5 = "e5bd7c2cf563ac4192b793934f545f49",
 --    dir = "uuid"
 -- }
+
 description = {
    summary = "A library for UUID generation",
    detailed = [[
@@ -22,6 +24,7 @@ description = {
    homepage = "http://www.tecgraf.puc-rio.br/~lhf/ftp/lua/#luuid",
    license = "Public domain"
 }
+
 dependencies = {
    "lua >= 5.1"
 }
@@ -34,15 +37,15 @@ external_dependencies = {
 }
 
 build = {
-   type = "make",
-   install_pass = false,
-   build_target = "so",
-   build_variables = {
-      LUAINC = "$(LUA_INCDIR)",
-      LUALIB = "$(LUA_LIBDIR)",
-      LUABIN = "$(LUA_BINDIR)" 
-   },
-   install = {
-      lib = { "uuid.so" }
+   type = "builtin",
+   modules = {
+      uuid = {
+         sources = {
+            "luuid.c"
+         },
+         libraries = {
+            "uuid"
+         }
+      }
    }
 }

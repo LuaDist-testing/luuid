@@ -2,7 +2,7 @@
 * luuid.c
 * uuid interface for Lua 5.1
 * Luiz Henrique de Figueiredo <lhf@tecgraf.puc-rio.br>
-* 24 Sep 2007 23:17:33
+* 03 Mar 2010 00:01:13
 * This code is hereby placed in the public domain.
 */
 
@@ -10,18 +10,19 @@
 #include "wuuid.h"
 #else
 #include <uuid/uuid.h>
-#ifndef UUID_VARIANT_OTHER
+#endif
+
+#if 0	/* use these if you get link errors (unlikely) */
 #define	uuid_generate_random	uuid_generate
 #define	uuid_generate_time	uuid_generate
 #define	uuid_time(c,p)		(-1)
-#endif
 #endif
 
 #include "lua.h"
 #include "lauxlib.h"
 
 #define MYNAME		"uuid"
-#define MYVERSION	MYNAME " library for " LUA_VERSION " / Sep 2007"
+#define MYVERSION	MYNAME " library for " LUA_VERSION " / Mar 2010"
 
 static int Lnew(lua_State *L)			/** new([s]) */
 {
@@ -63,7 +64,7 @@ static const luaL_reg R[] =
 
 LUALIB_API int luaopen_uuid(lua_State *L)
 {
- luaL_openlib(L,MYNAME,R,0);
+ luaL_register(L,MYNAME,R);
  lua_pushliteral(L,"version");			/** version */
  lua_pushliteral(L,MYVERSION);
  lua_settable(L,-3);
