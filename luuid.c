@@ -1,8 +1,8 @@
 /*
 * luuid.c
-* uuid interface for Lua 5.1
+* uuid interface for Lua 5.2
 * Luiz Henrique de Figueiredo <lhf@tecgraf.puc-rio.br>
-* 18 Nov 2010 19:16:20
+* 09 May 2012 22:22:00
 * This code is hereby placed in the public domain.
 */
 
@@ -22,7 +22,7 @@
 #include "lauxlib.h"
 
 #define MYNAME		"uuid"
-#define MYVERSION	MYNAME " library for " LUA_VERSION " / Nov 2010"
+#define MYVERSION	MYNAME " library for " LUA_VERSION " / May 2012"
 
 static int Lnew(lua_State *L)			/** new([s]) */
 {
@@ -64,7 +64,7 @@ static const luaL_Reg R[] =
 
 LUALIB_API int luaopen_uuid(lua_State *L)
 {
- luaL_register(L,MYNAME,R);
+ luaL_newlib(L,R);
  lua_pushliteral(L,"version");			/** version */
  lua_pushliteral(L,MYVERSION);
  lua_settable(L,-3);

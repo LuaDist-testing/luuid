@@ -1,6 +1,6 @@
 -- test uuid library
 
-require"uuid"
+local uuid=require"uuid"
 
 print(uuid.version)
 print""
